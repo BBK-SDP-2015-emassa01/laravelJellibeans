@@ -32,5 +32,12 @@
 	<div class="container">	
 		@yield('content')
 	</div>
+	<script>
+	LeapManager.init({
+		interactiveSelector:"a, input, img, .btn",
+		maxCursors:1,
+		enableScrollbarScrolling: true,
+		enableTouchScrolling: true
+	});</script>
 </body>
 </html>

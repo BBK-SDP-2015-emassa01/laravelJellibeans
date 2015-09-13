@@ -4,15 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class UsersController extends Controller
 {
-	public function results()
-    {
-        //
-    }
+
+	public function saveScore()
+	{
+		if (Auth::check()) {
+			$user = Auth::user();
+			$input = Input::only('score');
+			$user->update($input);
+			return Redirect::home();
+		} else {
+			return Redirect::home();
+		}
+	}
 
     /**
      * Display a listing of the resource.
@@ -40,9 +53,13 @@ class UsersController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $user = User::create(Input::only('username', 'email', 'password'));
+	    
+	    Auth::login($user);
+	    
+	    return Redirect::home();
     }
 
     /**

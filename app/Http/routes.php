@@ -11,12 +11,25 @@
 |
 */
 
-Route::get('/', 'PagesController@index');
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
+Route::get('home', 'PagesController@index');
 
 Route::get('search', 'SearchController@index');
 Route::get('do', 'SearchController@searchDo');
 Route::get('go', 'SearchController@searchGo');
 Route::get('know', 'SearchController@searchKnow');
 Route::get('social', 'SearchController@searchSocial');
+Route::get('results', 'SearchController@results');
 
-Route::get('results', 'UsersController@results');
+
+Route::post('home', 'UsersController@saveScore');
+
+
+// Authentication
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');

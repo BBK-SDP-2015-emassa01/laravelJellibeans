@@ -9,10 +9,10 @@
             <h4>Search</h4>
         </div>
         <div class = "col-md-3 text-center text-uppercase">
-            <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise" id = "firstSuperSmall">
-            <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise" id = "secondSuperSmall">
-             <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise" id = "thirdSuperSmall">
-            <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise" id = "fourthSuperSmall">
+            <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise leap-interactive" id = "firstSuperSmall">
+            <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise leap-interactive" id = "secondSuperSmall">
+             <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise leap-interactive" id = "thirdSuperSmall">
+            <img data-toggle ="modal" data-target ="#jbean" class="img-responsive surprise leap-interactive" id = "fourthSuperSmall">
         </div>
     </div>
 </div>
@@ -659,8 +659,20 @@
     </table>
 </div>
 
-<input type="button" onClick="checkScores();validateScores(); fillHidTable();" value="Save Your Answers">
-<input type="button" onClick="checkScores();validateScores(); calculateAQ(); " value="Calculate Your Score">
+<input class="leap-interactive" type="button" onClick="fillHidTable();" value="Save Your Answers">
+<!-- <input class="leap-interactive" type="button" onClick="calculateAQ();" value="Calculate Your Score"> -->
+
+<form method="POST" action="/home">
+    {!! csrf_field() !!}
+
+    <div class="hidden">
+        <input id="score" type="text" name="score" value="">
+    </div>
+
+    <div>
+        <input class="leap-interactive" onClick="calculateAQ();" type="submit" value="Calculate Your Score">
+    </div>
+</form>
 
 </div>
 </div>
@@ -679,12 +691,9 @@
                     <br> You can save your answers so that you dont have to complete the assesment each time you sign in.
                     </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default leap-interactive" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
-
-<script>LeapManager.init({interactiveSelector:"a",maxCursors:1});</script>
-
 @stop

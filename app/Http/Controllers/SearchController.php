@@ -34,5 +34,10 @@ class SearchController extends Controller
     {
         return view('search.social');
     }
+    
+    public function results()
+    {
+        return view('search.results');
+    }
 
 }

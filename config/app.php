@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomString'),
+    'key' => env('APP_KEY', 'D6TVYag1o1S1bqJLwuV8FuGZMB6MUXYV'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -136,6 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        'Collective\Html\HtmlServiceProvider', 
 
         /*
          * Application Service Providers...
@@ -193,6 +194,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Form'      => 'Collective\Html\FormFacade',  
+		'HTML'      => 'Collective\Html\HtmlFacade', // Optional 
 
     ],
 
